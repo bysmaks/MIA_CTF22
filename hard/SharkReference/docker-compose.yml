@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+        task:
+                restart: always
+                build: ./app/
+                ports:
+                        - "9600:9600/udp"
+                environment:
+                        - CTF_IP=0.0.0.0
+                        - CTF_PORT=9600
+                        - CTF_FLAG=CTF{1_h4v3_f1n5_8u7_1_m_n07_4_5h42kk}

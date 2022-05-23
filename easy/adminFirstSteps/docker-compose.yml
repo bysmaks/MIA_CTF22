@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  admin_1:
+    build: .
+    restart: always
+    ports:
+      - "2222:22"

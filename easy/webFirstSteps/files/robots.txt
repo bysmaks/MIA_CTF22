@@ -1,0 +1,2 @@
+Dissalow:
+	/super-secret-dir/f3fesfwfdfs

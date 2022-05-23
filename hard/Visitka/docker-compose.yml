@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+ task:
+   restart: always
+   build: .
+   ports:
+     - "9090:9090"

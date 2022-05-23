@@ -1,0 +1,58 @@
+<section class="flex justify-center h-full flex-wrap flex-col content-center">
+		<section id="content" style="min-width: 500px;">
+			{{#if name}}
+				
+				<div class="bg-gray-100 rounded-xl flex justify-between">
+					<div class="w-full p-4">
+						<blockquote class="my-2"><p class="text-lg font-semibold">"{{bio}}"</p></blockquote>
+						<p class="text-green-600 ml-2">{{name}}</p>
+						<p class="text-gray-500 ml-2">{{position}}</p>
+					</div>
+					
+				</div>
+			{{else}}
+			<form onsubmit='return onSubmit(this)'>
+				<div class="mt-2">
+					<label>Имя</label><br/>
+					<input type="text" name="name" class="w-full border border-black rounded outline-none p-2">
+				</div>
+				<div class="mt-2">
+					<label>О себе</label><br/>
+					<textarea class="text-sm w-full border border-black rounded outline-none p-2"
+					placeholder="" name="bio"
+					rows="5" 
+					></textarea>
+				</div>
+				<div class="mt-2">
+					<label>Навыки</label><br/>
+					<input type="text" name="position" class="w-full border border-black rounded outline-none p-2">
+				</div>
+				<div class="mt-4 flex justify-end">
+					<button type="submit">Отправить</button>
+				</div>
+			</form>
+			<script type="text/javascript">
+				function onSubmit( form ){
+					var data = $(form).serializeArray();
+					var formObject = { profile : {} };
+					$.each(data,
+					    function(i, v) {
+					        formObject.profile[v.name] = v.value;
+					    });
+					$.ajax({
+					    type: 'POST',
+					    url: '/',
+					    data: JSON.stringify(formObject),
+					    success: function(data, textStatus, jqXHR) { 
+					    	document.write(jqXHR.responseText); 
+					    },
+					    contentType: "application/json",
+					    dataType: 'html'
+					});
+					return false;
+				}
+
+			</script>
+			{{/if}}
+		</section>
+</section>
